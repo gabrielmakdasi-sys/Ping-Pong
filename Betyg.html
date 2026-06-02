@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Betygsöversikt</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1a1a;
+}
+
+header {
+    background: #003366;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+h1, h2 {
+    margin: 0 0 15px 0;
+}
+
+p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background: #003366;
+    color: white;
+}
+
+.status {
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Betygsöversikt</h1>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Studentinformation</h2>
+        <p>Utbildningsform: Komvux</p>
+        <p>Nuvarande status: Pågående studier</p>
+    </div>
+
+    <div class="card">
+        <h2>Registrerade kurser</h2>
+
+        <table>
+            <tr>
+                <th>Kurs</th>
+                <th>Betyg</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td>Matematik</td>
+                <td>E</td>
+                <td class="status">Avslutad</td>
+            </tr>
+
+            <tr>
+                <td>Programmering</td>
+                <td>D</td>
+                <td class="status">Avslutad</td>
+            </tr>
+
+            <tr>
+                <td>Fysik</td>
+                <td>-</td>
+                <td class="status">Pågående</td>
+            </tr>
+
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Sammanfattning</h2>
+        <p>Denna översikt visar dina nuvarande och avslutade kurser inom Komvux. Pågående kurser saknar slutgiltigt betyg.</p>
+    </div>
+
+</div>
+
+</body>
+</html>
