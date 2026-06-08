@@ -21,7 +21,7 @@ header {
     position: relative;
 }
 
-.logo {
+.logi {
     position: absolute;
     top: 10px;
     left: 20px;
@@ -72,13 +72,25 @@ th {
 .status {
     font-weight: bold;
 }
+
+tr:not(:first-child) {
+    cursor: pointer;
+}
+
+tr:not(:first-child):hover {
+    background-color: #f0f0f0;
+}
+
+#kommentarBox {
+    display: none;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-    <img src="sa.png" alt="Logotyp" class="logo">
+    <img src="bilder.png" alt="Logotyp" class="logo">
     <h1>Betygsöversikt</h1>
 </header>
 
@@ -100,19 +112,19 @@ th {
                 <th>Status</th>
             </tr>
 
-            <tr>
+            <tr onclick="visaKommentar('Matematik', 'Bra arbete under hela kursen. Fortsätt träna på algebra.')">
                 <td>Matematik</td>
                 <td>E</td>
                 <td class="status">Avslutad</td>
             </tr>
 
-            <tr>
+            <tr onclick="visaKommentar('Programmering', 'Du skriver välstrukturerad kod och löser problem självständigt.')">
                 <td>Programmering</td>
                 <td>D</td>
                 <td class="status">Avslutad</td>
             </tr>
 
-            <tr>
+            <tr onclick="visaKommentar('Fysik', 'Visar god förståelse för grunderna. Kursen pågår fortfarande.')">
                 <td>Fysik</td>
                 <td>-</td>
                 <td class="status">Pågående</td>
@@ -121,12 +133,29 @@ th {
         </table>
     </div>
 
+    <div id="kommentarBox" class="card">
+        <h2 id="kursNamn">Lärarens kommentar</h2>
+        <p id="kommentarText"></p>
+    </div>
+
     <div class="card">
         <h2>Sammanfattning</h2>
         <p>Denna översikt visar dina nuvarande och avslutade kurser inom Komvux. Pågående kurser saknar slutgiltigt betyg.</p>
     </div>
 
 </div>
+
+<script>
+function visaKommentar(kurs, kommentar) {
+    document.getElementById("kursNamn").textContent =
+        "Lärarens kommentar - " + kurs;
+
+    document.getElementById("kommentarText").textContent =
+        kommentar;
+
+    document.getElementById("kommentarBox").style.display = "block";
+}
+</script>
 
 </body>
 </html>
