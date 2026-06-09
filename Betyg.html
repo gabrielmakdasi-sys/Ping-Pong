@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Betygsöversikt</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#1f2937;
+}
+
+/* HEADER */
+
+header{
+    background:white;
+    padding:20px 35px;
+    border-bottom:1px solid #e5e7eb;
+    box-shadow:0 2px 10px rgba(0,0,0,0.04);
+}
+
+header h1{
+    font-size:28px;
+    font-weight:700;
+}
+
+/* LAYOUT */
+
+.container{
+    display:flex;
+    min-height:calc(100vh - 80px);
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:260px;
+    background:#111827;
+    padding:25px 15px;
+}
+
+.sidebar h2{
+    color:white;
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar li{
+    margin-bottom:8px;
+}
+
+.sidebar a{
+    display:block;
+    text-decoration:none;
+    color:#d1d5db;
+    padding:14px;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.sidebar a:hover{
+    background:#1f2937;
+    color:white;
+}
+
+/* CONTENT */
+
+.content{
+    flex:1;
+    padding:35px;
+}
+
+/* CARDS */
+
+.card{
+    background:white;
+    border-radius:16px;
+    padding:25px;
+    margin-bottom:20px;
+    border:1px solid #e5e7eb;
+    box-shadow:0 8px 20px rgba(0,0,0,0.05);
+}
+
+.card h2{
+    margin-bottom:15px;
+}
+
+/* TABELL */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#111827;
+    color:white;
+    padding:14px;
+    text-align:left;
+}
+
+td{
+    padding:14px;
+    border-bottom:1px solid #e5e7eb;
+}
+
+tr:not(:first-child){
+    cursor:pointer;
+}
+
+tr:not(:first-child):hover{
+    background:#f8fafc;
+}
+
+/* STATUS */
+
+.avslutad{
+    color:#16a34a;
+    font-weight:600;
+}
+
+.pagaende{
+    color:#f59e0b;
+    font-weight:600;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Betygsöversikt</h1>
+</header>
+
+<div class="container">
+
+    <!-- SIDOMENY -->
+
+    <aside class="sidebar">
+
+        <h2>Navigation</h2>
+
+        <ul>
+            <li><a href="index.html">🏠 Startsida</a></li>
+            <li><a href="Schema.html">📅 Schema</a></li>
+            <li><a href="Uppgifter.html">📝 Uppgifter</a></li>
+            <li><a href="Meddelande.html">📨 Meddelanden</a></li>
+            <li><a href="Betyg.html">📊 Betyg</a></li>
+            <li><a href="installningar.html">⚙️ Inställningar</a></li>
+        </ul>
+
+    </aside>
+
+    <!-- INNEHÅLL -->
+
+    <main class="content">
+
+        <div class="card">
+            <h2>Studentinformation</h2>
+            <p><strong>Utbildningsform:</strong> Komvux</p>
+            <p><strong>Status:</strong> Pågående studier</p>
+        </div>
+
+        <div class="card">
+
+            <h2>Registrerade kurser</h2>
+
+            <table>
+
+                <tr>
+                    <th>Kurs</th>
+                    <th>Betyg</th>
+                    <th>Status</th>
+                </tr>
+
+                <tr onclick="visaKommentar('Matematik','Bra arbete under hela kursen. Fortsätt träna på algebra.')">
+                    <td>Matematik</td>
+                    <td>E</td>
+                    <td class="avslutad">Avslutad</td>
+                </tr>
+
+                <tr onclick="visaKommentar('Programmering','Du skriver välstrukturerad kod och löser problem självständigt.')">
+                    <td>Programmering</td>
+                    <td>D</td>
+                    <td class="avslutad">Avslutad</td>
+                </tr>
+
+                <tr onclick="visaKommentar('Fysik','Visar god förståelse för grunderna. Kursen pågår fortfarande.')">
+                    <td>Fysik</td>
+                    <td>-</td>
+                    <td class="pagaende">Pågående</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+        <div id="kommentarBox" class="card" style="display:none;">
+            <h2 id="kursNamn">Lärarens kommentar</h2>
+            <p id="kommentarText"></p>
+        </div>
+
+        <div class="card">
+
+            <h2>Sammanfattning</h2>
+
+            <p>
+                Denna översikt visar dina nuvarande och avslutade kurser.
+                Pågående kurser saknar slutgiltigt betyg tills kursen är avslutad.
+            </p>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+
+function visaKommentar(kurs, kommentar){
+
+    document.getElementById("kursNamn").textContent =
+    "Lärarens kommentar - " + kurs;
+
+    document.getElementById("kommentarText").textContent =
+    kommentar;
+
+    document.getElementById("kommentarBox").style.display =
+    "block";
+
+}
+
+</script>
+
+</body>
+</html>
