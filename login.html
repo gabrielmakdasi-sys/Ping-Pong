@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Logga in</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.login-container{
+    background:white;
+    padding:40px;
+    border-radius:16px;
+    width:400px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:25px;
+    color:#111827;
+}
+
+.input-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:500;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    font-size:16px;
+}
+
+input:focus{
+    outline:none;
+    border-color:#2563eb;
+}
+
+.forgot-password{
+    text-align:right;
+    margin-bottom:20px;
+}
+
+.forgot-password a{
+    text-decoration:none;
+    color:#2563eb;
+    font-size:14px;
+}
+
+.forgot-password a:hover{
+    text-decoration:underline;
+}
+
+.login-btn{
+    width:100%;
+    padding:12px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.login-btn:hover{
+    background:#1d4ed8;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <h1>Logga in</h1>
+
+    <form action="index.html">
+
+        <div class="input-group">
+            <label for="email">E-post</label>
+            <input type="email" id="email" required>
+        </div>
+
+        <div class="input-group">
+            <label for="password">Lösenord</label>
+            <input type="password" id="password" required>
+        </div>
+
+        <div class="forgot-password">
+            <a href="glomtlosenord.html">Glömt lösenord?</a>
+        </div>
+
+        <button type="submit" class="login-btn">
+            Logga in
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
