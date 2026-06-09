@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meddelanden</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1a1a1a;
+}
+
+header {
+    background: #C40064;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 70px;
+    height: auto;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+h1, h2 {
+    margin: 0 0 15px 0;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+button {
+    background: #C40064;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #a00050;
+}
+
+.message {
+    background: #f8f8f8;
+    padding: 15px;
+    margin-top: 10px;
+    border-left: 4px solid #C40064;
+    border-radius: 6px;
+}
+
+.message b {
+    color: #C40064;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="logo.png" alt="Logotyp" class="logo">
+    <h1>📨 Meddelanden</h1>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Meddela din lärare</h2>
+
+        <label for="larare">Lärare</label>
+        <input
+            type="text"
+            id="larare"
+            placeholder="Skriv lärarens namn">
+
+        <label for="meddelande">Meddelande</label>
+        <textarea
+            id="meddelande"
+            rows="5"
+            placeholder="Skriv ditt meddelande här..."></textarea>
+
+        <button onclick="skickaMeddelande()">
+            Skicka meddelande
+        </button>
+    </div>
+
+    <div class="card">
+        <h2>Skickade meddelanden</h2>
+        <div id="meddelandeLista"></div>
+    </div>
+
+</div>
+
+<script>
+function skickaMeddelande() {
+
+    let larare =
+        document.getElementById("larare").value.trim();
+
+    let text =
+        document.getElementById("meddelande").value.trim();
+
+    if (larare === "" || text === "") {
+        alert("Fyll i både lärare och meddelande.");
+        return;
+    }
+
+    let box = document.createElement("div");
+    box.className = "message";
+
+    box.innerHTML =
+        "<b>Till: " + larare + "</b><br><br>" +
+        text;
+
+    document
+        .getElementById("meddelandeLista")
+        .prepend(box);
+
+    document.getElementById("larare").value = "";
+    document.getElementById("meddelande").value = "";
+}
+</script>
+
+</body>
+</html>
